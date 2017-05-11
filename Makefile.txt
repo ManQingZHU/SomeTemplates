@@ -1,0 +1,93 @@
+# for Multi-exe program
+
+CC = g++ -std=c++11
+DEBUG = -g
+LFLAGS = -Wall $(DEBUG) -o
+
+SOURCE = *.cpp *.hpp makefile ReadMe
+NAME = Project4
+
+EXE_1 = ADD
+EXE_1_OBJ = PDadd.o Diary.o 
+EXE_2 = LIST
+EXE_2_OBJ = PDlist.o Diary.o
+EXE_3 = SHOW
+EXE_3_OBJ = PDshow.o Diary.o
+EXE_4 = REMOVE
+EXE_4_OBJ = PDremove.o Diary.o
+
+EXES = $(EXE_1) $(EXE_2) $(EXE_3) $(EXE_4) 
+
+OBJ_1 = Diary.o
+OBJ_1_HEAD = Diary.hpp
+OBJ_2 = PDadd.o 
+OBJ_2_HEAD = PDadd.hpp Diary.hpp
+OBJ_3 = PDlist.o
+OBJ_3_HEAD = PDlist.hpp Diary.hpp
+OBJ_4 = PDshow.o
+OBJ_4_HEAD = PDshow.hpp Diary.hpp
+OBJ_5 = PDremove.o
+OBJ_5_HEAD = PDremove.hpp Diary.hpp
+
+all : $(EXES)
+.PHONY: all
+
+$(EXE_1) : $(EXE_1_OBJ)
+	$(CC) $(LFLAGS) $(EXE_1) $(EXE_1_OBJ)
+$(EXE_2) : $(EXE_2_OBJ)
+	$(CC) $(LFLAGS) $(EXE_2) $(EXE_2_OBJ)
+$(EXE_3) : $(EXE_3_OBJ)
+	$(CC) $(LFLAGS) $(EXE_3) $(EXE_3_OBJ)
+$(EXE_4) : $(EXE_4_OBJ)
+	$(CC) $(LFLAGS) $(EXE_4) $(EXE_4_OBJ)
+	
+$(OBJ_1) : $(OBJ_1_HEAD)
+$(OBJ_2) : $(OBJ_2_HEAD)
+$(OBJ_3) : $(OBJ_3_HEAD)
+$(OBJ_4) : $(OBJ_4_HEAD)
+$(OBJ_5) : $(OBJ_5_HEAD)
+
+.PHONY : tar
+tar :
+	tar cfv $(NAME).tar $(SOURCE)
+.PHONY : clean
+clean :
+	-rm $(EXES) *.o *.txt
+  
+  
+ #############################################
+  
+ # for single-exe program
+ 
+ CC = g++ -std=c++11
+DEBUG = -g
+LFLAGS = -Wall $(DEBUG) -o
+
+SOURCE = *.cpp *.hpp makefile READme
+NAME = Project5
+
+EXE_1 = TEST
+EXE_1_OBJ = main.o Fraction.o 
+
+EXES = $(EXE_1)  
+
+OBJ_1 = Fraction.o
+OBJ_1_HEAD = Fraction.hpp
+OBJ_2 = main.o 
+OBJ_2_HEAD = Fraction.hpp
+
+all : $(EXES)
+.PHONY: all
+
+$(EXE_1) : $(EXE_1_OBJ)
+	$(CC) $(LFLAGS) $(EXE_1) $(EXE_1_OBJ)
+	
+$(OBJ_1) : $(OBJ_1_HEAD)
+$(OBJ_2) : $(OBJ_2_HEAD)
+
+.PHONY : tar
+tar :
+	-tar cfv $(NAME).tar $(SOURCE)
+.PHONY : clean
+clean :
+	-rm $(EXES) *.o *.txt
