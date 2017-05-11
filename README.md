@@ -1,2 +1,6 @@
 # SomeTemplates
-Store some useful templates
+
+Store some useful templates: 
+* makefile (Multi-exe)
+* makefile (single-exe)
+* CMakeLists
