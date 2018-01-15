@@ -1,0 +1,5 @@
+export PYSPARK_PYTHON=python3
+export PATH=${PATH}:/home/you/spark-2.2.0-bin-hadoop2.7/bin
+
+pyspark
+spark-submit sparkcode.py
